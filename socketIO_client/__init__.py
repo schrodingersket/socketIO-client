@@ -69,8 +69,15 @@ class EngineIO(LoggingMixin):
     def _get_engineIO_session(self):
         warning_screen = self._yield_warning_screen()
         for elapsed_time in warning_screen:
-            transport = XHR_PollingTransport(
-                self._http_session, self._is_secure, self._url)
+            if 'xhr-polling' in self._client_transports:
+                transport = XHR_PollingTransport(
+                    self._http_session, self._is_secure, self._url)
+            elif 'websocket' in self._client_transports:
+                transport = WebsocketTransport(
+                    self._http_session, self._is_secure, self._url)
+            else:
+                raise ConnectionError(
+                    'no supported transports')
             try:
                 engineIO_packet_type, engineIO_packet_data = next(
                     transport.recv_packet())
