@@ -35,7 +35,7 @@ setup(
         'coverage',
     ],
     dependency_links=[
-        'git+ssh://git@github.com/schrodingersket/websocket-client#egg=websocket-client-0.39.0'
+        'https://github.com/schrodingersket/websocket-client/tarball/master#egg=websocket-client-0.39.0'
     ],
     packages=find_packages(),
     include_package_data=True,
