@@ -34,6 +34,9 @@ setup(
         'nose',
         'coverage',
     ],
+    dependency_links=[
+        "git+ssh://git@github.com/schrodingersket/websocket-client.git"
+    ],
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False)
