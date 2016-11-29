@@ -12,3 +12,4 @@ sdist
 # Vim
 *.sw[op]
 *~
+venv/
